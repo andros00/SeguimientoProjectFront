@@ -1,0 +1,58 @@
+name: Build and Analyze
+
+on:
+  push:
+    branches:
+      - "*"  # Run on all branches
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  # SonarQube Analysis
+  sonarqube:
+    name: SonarQube
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Ensure full history for better analysis
+      - name: SonarQube Scan
+        uses: SonarSource/sonarqube-scan-action@v4
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Required for PR data
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+  # CodeQL Analysis
+  codeql:
+    name: CodeQL
+    permissions:
+      contents: read
+      security-events: write  # Required for uploading CodeQL results
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        language: [javascript, typescript]  # Include JavaScript and TypeScript for Angular
+    steps:
+      # Checkout the repository
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Initialize CodeQL
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v2
+        with:
+          languages: ${{ matrix.language }}
+          # If using a custom config file, uncomment the following line:
+          # config-file: .github/codeql/codeql-config.yml
+
+      # Build the Angular project
+      - name: Install Dependencies
+        run: yarn install
+
+      - name: Build Project
+        run: yarn build
+
+      # Perform CodeQL analysis
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v2

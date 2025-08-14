@@ -1,0 +1,17 @@
+.status-card {
+  background-color: #dde8ff;
+  border-radius: 4px;
+  font-family: Arial, sans-serif;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra horizontalmente */
+  text-align: center; /* Centra el texto */
+}
+
+.title, .id, .approved {
+  font-weight: bold;
+  color: #2d5daa;
+}
+

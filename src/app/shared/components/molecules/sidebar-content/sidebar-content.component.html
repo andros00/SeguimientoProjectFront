@@ -1,0 +1,60 @@
+<ng-container class="dropdowns-container">
+  <div class="form-group">
+    <form [formGroup]="form">
+      <app-input-text 
+        label="Código Proyecto" 
+        id="project-code-id" 
+        formControlName="projectCode">
+      </app-input-text>
+
+      <app-dropdown-required 
+        label="Centro de Gestión" 
+        id="administrative-center-dropdown"
+        formControlName="administrativeCenter" 
+        [options]="(options$['administrativeCenter'] | async) || []">
+      </app-dropdown-required>
+
+      <app-dropdown 
+        label="Estado" 
+        id="status-dropdown" 
+        formControlName="status"
+        [options]="(options$['statusByUser'] | async) || []">
+      </app-dropdown>
+
+      <app-dropdown 
+        label="Convocatoria" 
+        id="calls-dropdown" 
+        formControlName="announcement"
+        [options]="(options$['announcement'] | async) || []">
+      </app-dropdown>
+
+      <app-dropdown 
+        label="Proceso de Selección" 
+        id="selection-process-dropdown" 
+        formControlName="selectionProcess"
+        [options]="(options$['selectionProcess'] | async) || []">
+      </app-dropdown>
+
+      <app-dropdown 
+        label="Tipo de Proyecto" 
+        id="project-type-dropdown" 
+        formControlName="projectType"
+        [options]="(options$['projectType'] | async) || []">
+      </app-dropdown>
+
+      <div class="button-container">
+        <app-button-secondary 
+          [label]="'LIMPIAR FILTROS'" 
+          (click)="onClearFilters()">
+        </app-button-secondary>
+        
+        <app-button-primary 
+          [label]="'CONSULTAR'" 
+          [icon]="'search'" 
+          [type]="'button'" 
+          (click)="onSubmit()">
+        </app-button-primary>
+      </div>
+    </form>
+  </div>
+</ng-container>
