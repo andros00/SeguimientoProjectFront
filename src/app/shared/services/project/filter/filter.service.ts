@@ -26,13 +26,14 @@ export class FilterService {
     let params = new HttpParams()
       .set('skip', skip.toString())
       .set('limit', limit.toString())
-      .set('administrativeCenterId', administrativeCenterId.toString());
+      .set('administrativeCenterId', administrativeCenterId);
 
-    if (projectCode != null) params = params.set('projectCode', projectCode);
+    if (projectCode) params = params.set('projectCode', projectCode.toString());
     if (status != null) params = params.set('status', status);
-    if (announcementId != null) params = params.set('announcementId', announcementId.toString());
-    if (processSelectionId != null) params = params.set('processSelectionId', processSelectionId.toString());
-    if (projectTypeId != null) params = params.set('projectTypeId', projectTypeId.toString());
+    if (announcementId != null) params = params.set('announcementId', announcementId);
+    if (processSelectionId != null) params = params.set('processSelectionId', processSelectionId);
+    if (projectTypeId != null) params = params.set('projectTypeId', projectTypeId);
     return this.http.get(this.url, { params });
   }
+
 }
