@@ -31,7 +31,7 @@ export class FilterService {
     if (projectCode) params = params.set('projectCode', projectCode.toString());
     if (status != null) params = params.set('status', status);
     if (announcementId != null) params = params.set('announcementId', announcementId);
-    if (processSelectionId != null) params = params.set('processSelectionId', processSelectionId);
+    if (processSelectionId != null) params = params.set('selectionProcess', processSelectionId);
     if (projectTypeId != null) params = params.set('projectTypeId', projectTypeId);
     return this.http.get(this.url, { params });
   }

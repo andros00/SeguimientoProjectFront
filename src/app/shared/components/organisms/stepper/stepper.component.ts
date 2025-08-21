@@ -2,6 +2,7 @@ import { Component, Input, ViewChild, Injector } from '@angular/core';
 import { MatStepper } from '@angular/material/stepper';
 import { FormBuilder, Validators } from '@angular/forms';
 import { FormalStartGeneralInfoComponent } from '../../molecules/formal-start-general-info/formal-start-general-info.component';
+import { FormalStartParticipantsInfoComponent } from '../../molecules/formal-start-participants-info/formal-start-participants-info.component';
 
 @Component({
   selector: 'app-stepper',
@@ -42,7 +43,8 @@ export class StepperComponent {
       {
         label: 'Participantes',
         formGroup: this._formBuilder.group({ participantsCtrl: ['', Validators.required] }),
-        controlName: 'participantsCtrl'
+        component: FormalStartParticipantsInfoComponent,
+        controlName: 'participantsCtrl', injector: this.createInjector()
       },
       {
         label: 'Compromisos',
@@ -74,6 +76,7 @@ export class StepperComponent {
 
   goToNextStep() {
     if (this.stepper) {
+      console.log('datos del siguiente step'+ this.stepper);
       this.stepper.next();
     }
   }
