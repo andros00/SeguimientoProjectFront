@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import {ParticipantService} from 'src/app/shared/services/project/participant/participant.service';
+import {IProjectParticipantDTO} from 'src/app/core/interfaces/IPojectParticipantDTO';
 
 @Component({
   selector: 'app-formal-start-participants-info',
@@ -7,9 +9,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormalStartParticipantsInfoComponent implements OnInit {
 
-  constructor() { }
+  participants: IProjectParticipantDTO[] = [];
+  noParticipants = false;
+
+  constructor(@Inject('projectCode') public projectCode: string, private participantService: ParticipantService) { }
 
   ngOnInit() {
+    this.loadParticipants();
+  }
+
+    loadParticipants(): void {
+    this.participantService.getParticipantsByProjectCode(this.projectCode).subscribe({
+      next: (data) => {
+        if (data && data.length > 0) {
+          this.participants = data;
+        } else {
+          this.noParticipants = true;
+        }
+      },
+      error: (err) => {
+        console.error('Error fetching participants', err);
+      }
+    });
   }
 
 }
