@@ -1,3 +1,78 @@
-<p>
-  formal-start-participants-info works!
-</p>
+<table id="result-table" class="table table-striped table-bordered margin-top"
+  style="width:100%">
+  <thead>
+    <tr class="header-table">
+      <th></th>
+      <th>Nombre</th>
+      <th>Grupo de investigación</th>
+      <th>Rol en proyecto/Vínculo</th>
+      <th>Dedicación</th>
+      <th>Programa académico apoyado/Porcentaje</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let participante of listaParticipantes">
+      <tr class="table-hover">
+        <td>
+          <a >
+          </a>
+        </td>
+        <td>
+        </td>
+        <td>{{participante.grupoInvestigacion? participante.grupoInvestigacion.nombreCorto: ''}}</td>
+        <td>
+        </td>
+        <td>{{participante.dedicacionHoras}}h - {{participante.dedicacionMeses}}m
+          <span *ngIf="participante.dedicacionHorasPlan">/ P.T.:{{participante.dedicacionHorasPlan}}h - {{participante.dedicacionMesesPlan}}m</span></td>
+        <td>
+        </td>
+        <td *ngIf="editable">
+          <button class="button-more" []="menu">
+          </button>
+        </td>
+      </tr>
+      <tr *ngIf="participante.habilitarRegistro">
+        <td colspan="8">
+          <div class="content-table">
+            <div class="title-info">
+              <h3 class="primary-color margin-bottom">Información requerida</h3>
+            </div>
+            <div class="row">
+              <div class="col-10">
+                <div class="card-accordion">
+                  <div class="row margin-right margin-bottom">
+                    <span *ngIf="participante.participante"> <b>
+                      </b>:
+                      {{participante.participante.identificacion}}</span>
+                  </div>
+                  <div class="row margin-right margin-bottom">
+                    <span *ngIf="participante.participante"> <b>
+                      </b>:
+                      {{participante.participante.telefono}}</span>
+                  </div>
+                  <div class="row margin-right margin-bottom">
+                    <span *ngIf="participante.participante"> <b>
+                      </b>:
+                      {{participante.participante.correoElectronico}}</span>
+                  </div>
+                  <div class="row margin-right margin-bottom">
+                    <span *ngIf="participante.funcion"> <b>
+                      </b>: {{participante.funcion}}</span>
+                  </div>
+                  <div class="row margin-right margin-bottom">
+                    <span *ngIf="participante.institucionP"> <b>
+                      </b>:
+                      {{participante.institucionP.nombreCorto}}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </ng-container>
+  </tbody>
+  <tfoot>
+  </tfoot>
+</table>

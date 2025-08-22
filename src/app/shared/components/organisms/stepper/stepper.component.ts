@@ -10,7 +10,7 @@ import { FormalStartParticipantsInfoComponent } from '../../molecules/formal-sta
   styleUrls: ['./stepper.component.scss']
 })
 export class StepperComponent {
-  isLinear = true;
+  isLinear = false;
   steps: any[] = [];
 
   @Input() projectCode!: string;
