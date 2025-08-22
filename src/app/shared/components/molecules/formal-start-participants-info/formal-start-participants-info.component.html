@@ -1,8 +1,6 @@
-<table id="result-table" class="table table-striped table-bordered margin-top"
-  style="width:100%">
+<table id="result-table" class="table table-striped table-bordered margin-top" style="width:100%">
   <thead>
     <tr class="header-table">
-      <th></th>
       <th>ID</th>
       <th>Proyecto</th>
       <th>Responsable</th>
@@ -16,9 +14,9 @@
       <th>% Académico</th>
     </tr>
   </thead>
+
   <tbody>
-    <ng-container >
-      <tr *ngFor="let participante of participants" class="table-hover">
+    <tr *ngFor="let participante of participants" class="table-hover">
       <td>{{ participante.id }}</td>
       <td>{{ participante.project }}</td>
       <td>{{ participante.responsible }}</td>
@@ -30,9 +28,10 @@
       <td>{{ participante.dedicationHoursPlan }}</td>
       <td>{{ participante.supportedProgramCode }}</td>
       <td>{{ participante.academicProgPercentage }}%</td>
-      </tr>
-    </ng-container>
+    </tr>
+
+    <tr *ngIf="noParticipants">
+      <td colspan="11" class="text-center">No se encontraron participantes</td>
+    </tr>
   </tbody>
-  <tfoot>
-  </tfoot>
 </table>

@@ -1,11 +1,13 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import {ParticipantService} from 'src/app/shared/services/project/participant/participant.service';
 import {IProjectParticipantDTO} from 'src/app/core/interfaces/IPojectParticipantDTO';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-formal-start-participants-info',
   templateUrl: './formal-start-participants-info.component.html',
-  styleUrls: ['./formal-start-participants-info.component.css']
+  styleUrls: ['./formal-start-participants-info.component.css'],
+  imports: [CommonModule]
 })
 export class FormalStartParticipantsInfoComponent implements OnInit {
 
