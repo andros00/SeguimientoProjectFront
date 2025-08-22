@@ -17,8 +17,8 @@
     </tr>
   </thead>
   <tbody>
-    <ng-container *ngFor="let participante of participants">
-      <tr class="table-hover">
+    <ng-container >
+      <tr *ngFor="let participante of participants" class="table-hover">
       <td>{{ participante.id }}</td>
       <td>{{ participante.project }}</td>
       <td>{{ participante.responsible }}</td>
