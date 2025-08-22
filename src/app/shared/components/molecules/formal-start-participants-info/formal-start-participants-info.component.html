@@ -1,37 +1,86 @@
-<table id="result-table" class="table table-striped table-bordered margin-top" style="width:100%">
-  <thead>
-    <tr class="header-table">
-      <th>ID</th>
-      <th>Proyecto</th>
-      <th>Responsable</th>
-      <th>Nombre Completo</th>
-      <th>Grupo</th>
-      <th>Meses</th>
-      <th>Horas</th>
-      <th>Meses Plan</th>
-      <th>Horas Plan</th>
-      <th>Código Programa</th>
-      <th>% Académico</th>
-    </tr>
-  </thead>
+<div class="header">
+  <app-status-indicator [projectsNumber]="participantsNumber" />
+</div>
 
-  <tbody>
-    <tr *ngFor="let participante of participants" class="table-hover">
-      <td>{{ participante.id }}</td>
-      <td>{{ participante.project }}</td>
-      <td>{{ participante.responsible }}</td>
-      <td>{{ participante.fullName }}</td>
-      <td>{{ participante.group }}</td>
-      <td>{{ participante.dedicationMonths }}</td>
-      <td>{{ participante.dedicationHours }}</td>
-      <td>{{ participante.dedicationMonthsPlan }}</td>
-      <td>{{ participante.dedicationHoursPlan }}</td>
-      <td>{{ participante.supportedProgramCode }}</td>
-      <td>{{ participante.academicProgPercentage }}%</td>
-    </tr>
+<table mat-table [dataSource]="participants" class="mat-elevation-z8">
 
-    <tr *ngIf="noParticipants">
-      <td colspan="11" class="text-center">No se encontraron participantes</td>
-    </tr>
-  </tbody>
+  <!-- ID -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> ID </th>
+    <td mat-cell *matCellDef="let p"> {{ p.id }} </td>
+  </ng-container>
+
+  <!-- Proyecto -->
+  <ng-container matColumnDef="project">
+    <th mat-header-cell *matHeaderCellDef> Proyecto </th>
+    <td mat-cell *matCellDef="let p"> {{ p.project }} </td>
+  </ng-container>
+
+  <!-- Responsable -->
+  <ng-container matColumnDef="responsible">
+    <th mat-header-cell *matHeaderCellDef> Responsable </th>
+    <td mat-cell *matCellDef="let p"> {{ p.responsible }} </td>
+  </ng-container>
+
+  <!-- Nombre completo -->
+  <ng-container matColumnDef="fullName">
+    <th mat-header-cell *matHeaderCellDef> Nombre completo </th>
+    <td mat-cell *matCellDef="let p"> {{ p.fullName }} </td>
+  </ng-container>
+
+  <!-- Grupo -->
+  <ng-container matColumnDef="group">
+    <th mat-header-cell *matHeaderCellDef> Grupo </th>
+    <td mat-cell *matCellDef="let p"> {{ p.group }} </td>
+  </ng-container>
+
+  <!-- Meses dedicación -->
+  <ng-container matColumnDef="dedicationMonths">
+    <th mat-header-cell *matHeaderCellDef> Meses </th>
+    <td mat-cell *matCellDef="let p"> {{ p.dedicationMonths }} </td>
+  </ng-container>
+
+  <!-- Horas dedicación -->
+  <ng-container matColumnDef="dedicationHours">
+    <th mat-header-cell *matHeaderCellDef> Horas </th>
+    <td mat-cell *matCellDef="let p"> {{ p.dedicationHours }} </td>
+  </ng-container>
+
+  <!-- Meses plan -->
+  <ng-container matColumnDef="dedicationMonthsPlan">
+    <th mat-header-cell *matHeaderCellDef> Meses Plan </th>
+    <td mat-cell *matCellDef="let p"> {{ p.dedicationMonthsPlan }} </td>
+  </ng-container>
+
+  <!-- Horas plan -->
+  <ng-container matColumnDef="dedicationHoursPlan">
+    <th mat-header-cell *matHeaderCellDef> Horas Plan </th>
+    <td mat-cell *matCellDef="let p"> {{ p.dedicationHoursPlan }} </td>
+  </ng-container>
+
+  <!-- Código Programa -->
+  <ng-container matColumnDef="supportedProgramCode">
+    <th mat-header-cell *matHeaderCellDef> Código Programa </th>
+    <td mat-cell *matCellDef="let p"> {{ p.supportedProgramCode }} </td>
+  </ng-container>
+
+  <!-- % Académico -->
+  <ng-container matColumnDef="academicProgPercentage">
+    <th mat-header-cell *matHeaderCellDef> % Académico </th>
+    <td mat-cell *matCellDef="let p"> {{ p.academicProgPercentage }}% </td>
+  </ng-container>
+
+  <!-- Acciones -->
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef> Acciones </th>
+    <app-menu mat-cell *matCellDef="let p" [menuItems]="p.menuItems" />
+  </ng-container>
+
+  <!-- Filas -->
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
 </table>
+
+<mat-paginator [length]="participants.data.length" [pageSize]="5" [pageSizeOptions]="[5, 10, 25]" />
+<app-footer />
