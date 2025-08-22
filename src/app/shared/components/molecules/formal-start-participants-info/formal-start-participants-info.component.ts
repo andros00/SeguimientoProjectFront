@@ -7,8 +7,7 @@ import { CommonModule } from '@angular/common';
   selector: 'app-formal-start-participants-info',
   templateUrl: './formal-start-participants-info.component.html',
   styleUrls: ['./formal-start-participants-info.component.css'],
-  imports: [CommonModule]
-})
+ })
 export class FormalStartParticipantsInfoComponent implements OnInit {
 
   participants: IProjectParticipantDTO[] = [];
