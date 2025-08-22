@@ -3,30 +3,33 @@
   <thead>
     <tr class="header-table">
       <th></th>
-      <th>Nombre</th>
-      <th>Grupo de investigación</th>
-      <th>Rol en proyecto/Vínculo</th>
-      <th>Dedicación</th>
-      <th>Programa académico apoyado/Porcentaje</th>
-      <th>Acciones</th>
+      <th>ID</th>
+      <th>Proyecto</th>
+      <th>Responsable</th>
+      <th>Nombre Completo</th>
+      <th>Grupo</th>
+      <th>Meses</th>
+      <th>Horas</th>
+      <th>Meses Plan</th>
+      <th>Horas Plan</th>
+      <th>Código Programa</th>
+      <th>% Académico</th>
     </tr>
   </thead>
   <tbody>
     <ng-container *ngFor="let participante of participants">
       <tr class="table-hover">
-        <td>
-          <a >
-          </a>
-        </td>
-        <td>
-        </td>
-        <td>{{participante.grupoInvestigacion? participante.grupoInvestigacion.nombreCorto: ''}}</td>
-        <td>
-        </td>
-        <td>{{participante.dedicacionHoras}}h - {{participante.dedicacionMeses}}m
-          <span *ngIf="participante.dedicacionHorasPlan">/ P.T.:{{participante.dedicacionHorasPlan}}h - {{participante.dedicacionMesesPlan}}m</span></td>
-        <td>
-        </td>
+      <td>{{ participante.id }}</td>
+      <td>{{ participante.project }}</td>
+      <td>{{ participante.responsible }}</td>
+      <td>{{ participante.fullName }}</td>
+      <td>{{ participante.group }}</td>
+      <td>{{ participante.dedicationMonths }}</td>
+      <td>{{ participante.dedicationHours }}</td>
+      <td>{{ participante.dedicationMonthsPlan }}</td>
+      <td>{{ participante.dedicationHoursPlan }}</td>
+      <td>{{ participante.supportedProgramCode }}</td>
+      <td>{{ participante.academicProgPercentage }}%</td>
       </tr>
     </ng-container>
   </tbody>
