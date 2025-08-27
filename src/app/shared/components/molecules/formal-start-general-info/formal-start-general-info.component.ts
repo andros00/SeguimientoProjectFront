@@ -1,5 +1,6 @@
 import { Component, Inject, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ProjectIformalService } from 'src/app/shared/services/project/project-iformal/project-iformal.service';
 
 @Component({
   selector: 'app-formal-start-general-info',
@@ -10,6 +11,7 @@ export class FormalStartGeneralInfoComponent {
   form!: FormGroup;
 
   constructor(
+    private projectIformalService: ProjectIformalService,
     @Inject('projectCode') public projectCode: string,
     private fb: FormBuilder) {
     this.initializeForm();
@@ -55,5 +57,22 @@ onStartDateChange(date: Date): void {
   this.form.get('startDate')!.setValue(date);
   this.calculateEndDate(); // haces el cálculo justo después de actualizar
 }
+
+getProjectInicioFormal(): void {
+    this.projectIformalService.getProjectIFormalByProjectCode(this.projectCode).subscribe({
+      next: (data) => {
+        if (data && data.length > 0) {
+          this.projectIformalService.data = data;
+          this.noParticipants = false;
+        } else {
+          this.noParticipants = true;
+          this.participants.data = [];
+        }
+      },
+      error: (err) => {
+        console.error('Error fetching participants', err);
+      }
+    });
+  }
 
 }

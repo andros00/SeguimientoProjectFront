@@ -15,7 +15,11 @@ export const ENDPOINTS = {
       ANNOUNCEMENT_LIST: "v1/convocatoria/lista-convocatorias",
     },
     PARTICIPANT_URL: {
-      PARTICIPANT_PROJECT: "/v1/proyecto/participante",
+      PARTICIPANT_PROJECT: "v1/proyecto/participante",
+    },
+    IFORMAL_URL: {
+      PROJECT_IFORMAL: "v1/proyecto/inicio-formal",
+      PROJECT_IFORMAL_BY_CODE: "v1/proyecto/inicio-formal/code"
     }
   }
 };

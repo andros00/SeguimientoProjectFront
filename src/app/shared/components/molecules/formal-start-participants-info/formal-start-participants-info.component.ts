@@ -20,10 +20,8 @@ export class FormalStartParticipantsInfoComponent implements OnInit {
     'responsible',
     'fullName',
     'group',
-    'dedicationMonths',
-    'dedicationHours',
-    'dedicationMonthsPlan',
-    'dedicationHoursPlan',
+    'dedication',       // ← combinado meses/horas
+    'dedicationPlan',   // ← combinado meses/horas plan
     'supportedProgramCode',
     'academicProgPercentage',
   ];

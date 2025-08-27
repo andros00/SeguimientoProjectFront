@@ -8,4 +8,5 @@ export interface IProject {
   selectionProcess: string;
   shortName: string;
   status: string;
+  duration: number;
 }

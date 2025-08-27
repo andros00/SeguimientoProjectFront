@@ -1,14 +1,14 @@
 export interface IProjectParticipantDTO{
-   id: String ;
-    project: String ;
-    responsible: String ;
-    fullName: String;
-    group: Number ;
-    dedicationMonths: Number ;
-    dedicationHours: Number ;
-    dedicationMonthsPlan: Number ;
-    dedicationHoursPlan: Number ;
-    supportedProgramCode: Number ;
+   id: string ;
+    project: string ;
+    responsible: string ;
+    fullName: string;
+    group: number ;
+    dedicationMonths: number ;
+    dedicationHours: number ;
+    dedicationMonthsPlan: number ;
+    dedicationHoursPlan: number ;
+    supportedProgramCode: number ;
     academicProgPercentage: DoubleRange;
     projectParticipantRole: [];
 }
