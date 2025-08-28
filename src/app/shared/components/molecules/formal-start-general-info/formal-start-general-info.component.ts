@@ -11,7 +11,7 @@ import { IProjectIFormalDTO } from 'src/app/core/interfaces/IProjectIFormalDTO';
 export class FormalStartGeneralInfoComponent {
   form!: FormGroup;
 
-  iProject?: IProjectIFormalDTO;
+  private iProject?: IProjectIFormalDTO;
 
   constructor(
     private projectIformalService: ProjectIformalService,
@@ -27,20 +27,22 @@ export class FormalStartGeneralInfoComponent {
       startDate: [''],
       endDate: [''],
       approvalDate: [''],
-      downloadApprovalDocument: [''],
-      infoApprovalDocument: [''],
+     // downloadApprovalDocument: [''],
+     // infoApprovalDocument: [''],
     });
   }
 
   ngOnInit(): void {
+    this.initializeForm();
+    this.getProjectInicioFormal();
+
     // Recalcular cuando cambie la fecha de inicio
     this.form.get('startDate')!.valueChanges.subscribe(() => this.calculateEndDate());
 
     // Recalcular cuando cambie la duración
     this.form.get('projectDuration')!.valueChanges.subscribe(() => this.calculateEndDate());
+    this.form.get('projectDuration')!.disable;
 
-    this.initializeForm();
-    this.getProjectInicioFormal();
   }
 
   private calculateEndDate(): void {
@@ -71,12 +73,12 @@ export class FormalStartGeneralInfoComponent {
         this.iProject = data;
         this.form.patchValue({
           internCode: data.projectCode,
-          projectDuration: data.projectDuration,
+          projectDuration: data.duration,
           startDate: data.startDate ? new Date(data.startDate) : null,
           endDate: data.endDate ? new Date(data.endDate) : null,
           approvalDate: data.approvalDate ? new Date(data.approvalDate) : null,
-          downloadApprovalDocument: data.downloadApprovalDocument,
-          infoApprovalDocument: data.infoApprovalDocument
+         // downloadApprovalDocument: data.downloadApprovalDocument,
+         // infoApprovalDocument: data.infoApprovalDocument
         });
       },
       error: (err) => {

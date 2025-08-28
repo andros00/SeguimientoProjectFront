@@ -4,6 +4,8 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { ParticipantService } from 'src/app/shared/services/project/participant/participant.service';
 import { IProjectParticipantDTO } from 'src/app/core/interfaces/IPojectParticipantDTO';
+import { ParticipantRoleService } from 'src/app/shared/services/project/participant-role/participant-role.service';
+import { IParticipantRoleDTO } from 'src/app/core/interfaces/IParticipantRoleDTO';
 
 @Component({
   selector: 'app-formal-start-participants-info',
@@ -15,15 +17,16 @@ import { IProjectParticipantDTO } from 'src/app/core/interfaces/IPojectParticipa
 
 export class FormalStartParticipantsInfoComponent implements OnInit {
  displayedColumns: string[] = [
-    'id',
-    'project',
-    'responsible',
+    //'id',
+    //'project',
+    //'responsible',
     'fullName',
+    'rolParticipant',
     'group',
     'dedication',       // ← combinado meses/horas
     'dedicationPlan',   // ← combinado meses/horas plan
     'supportedProgramCode',
-    'academicProgPercentage',
+    //'academicProgPercentage',
   ];
 
   participants = new MatTableDataSource<IProjectParticipantDTO>([]);
@@ -33,7 +36,9 @@ export class FormalStartParticipantsInfoComponent implements OnInit {
 
   constructor(
     @Inject('projectCode') public projectCode: string,
-    private participantService: ParticipantService
+    private participantService: ParticipantService,
+    private participantRole: ParticipantRoleService
+
   ) { }
 
   ngOnInit() {
@@ -50,6 +55,8 @@ export class FormalStartParticipantsInfoComponent implements OnInit {
         if (data && data.length > 0) {
           this.participants.data = data;
           this.noParticipants = false;
+          this.rolesParticipant(this.participants.data);
+
         } else {
           this.noParticipants = true;
           this.participants.data = [];
@@ -64,5 +71,15 @@ export class FormalStartParticipantsInfoComponent implements OnInit {
   get participantsNumber(): number {
     return this.participants.data.length;
   }
+
+  private rolesParticipant(lista: IProjectParticipantDTO[]): void {
+  console.log('****participantes***'+lista.length);
+    lista.forEach(item => {
+    this.participantRole.getParticipantRoleByid(item.projectParticipantRole).subscribe(role => {
+      console.log('****rol*'+role.name);
+      item.nameRol = role.name; // agregamos el campo dinámico
+    });
+  });
+}
 
 }

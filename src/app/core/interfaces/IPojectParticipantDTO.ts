@@ -10,5 +10,6 @@ export interface IProjectParticipantDTO{
     dedicationHoursPlan: number ;
     supportedProgramCode: number ;
     academicProgPercentage: DoubleRange;
-    projectParticipantRole: [];
+    projectParticipantRole: number;
+    nameRol: string;
 }

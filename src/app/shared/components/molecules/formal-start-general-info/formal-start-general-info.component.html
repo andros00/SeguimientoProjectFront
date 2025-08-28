@@ -2,11 +2,11 @@
   <p><span style="color: red;">*</span> Complete la información para el inicio formal.</p>
   <div class="form-group-container">
     <app-input-text [label]="'Código interno'" [readonly]="true" [value]="projectCode" class="input" />
-    <app-input-text [label]="'Duracion del proyecto (meses)'" class="input" type="number" formControlName="projectDuration" />
+    <app-input-text [label]="'Duracion del proyecto (meses)'" class="input" formControlName="projectDuration" />
   </div>
   <div class="form-group-container">
     <app-datepicker [label]="'* Fecha de inicio'" class="input" formControlName="startDate" />
-    <app-datepicker [label]="'Fecha de finalización'" [readonly]="true" class="input" formControlName="endDate" />
+    <app-datepicker [label]="'Fecha de finalización'" [disabled]="true" class="input" formControlName="endDate" />
   </div>
   <div class="form-group-container">
     <app-datepicker [label]="'Fecha de aprobación'" class="input" />

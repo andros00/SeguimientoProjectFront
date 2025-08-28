@@ -15,8 +15,8 @@ private readonly url = `${environment.route}/${ENDPOINTS.V1.IFORMAL_URL.PROJECT_
 
   constructor(private http: HttpClient) { }
 
-  getProjectIFormalByProjectCode(projectCode: string): Observable<IProjectIFormalDTO[]> {
-    return this.http.get<IProjectIFormalDTO[]>(`${this.url}/${projectCode}`);
+  getProjectIFormalByProjectCode(projectCode: string): Observable<IProjectIFormalDTO> {
+    return this.http.get<IProjectIFormalDTO>(`${this.url}/${projectCode}`);
   }
 
 }
