@@ -59,11 +59,6 @@ export class FormalStartParticipantsInfoComponent implements OnInit {
        this.lista = data;
        this.rolesParticipant(this.lista);
 
-
-
-
-
-
       /* next: (data) => {
         if (data && data.length > 0) {
           this.lista = data;
