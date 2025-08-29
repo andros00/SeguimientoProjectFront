@@ -21,8 +21,11 @@ export const ENDPOINTS = {
       PROJECT_IFORMAL: "v1/proyecto/inicio-formal",
       PROJECT_IFORMAL_BY_CODE: "v1/proyecto/inicio-formal/code"
     },
-    IROL_URL: {
+    ROL_URL: {
       PARTICIPANT_ROLE: "v1/proyecto/participante/rol",
+    },
+    GROUP_URL: {
+      PARTICIPANT_GROUP: "v1/proyecto/participante/rol",
     }
   }
 };

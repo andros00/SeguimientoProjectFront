@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment';
 })
 export class ParticipantRoleService {
 
-private readonly url = `${environment.route}/${ENDPOINTS.V1.IROL_URL.PARTICIPANT_ROLE}`;
+private readonly url = `${environment.route}/${ENDPOINTS.V1.ROL_URL.PARTICIPANT_ROLE}`;
 
 
   constructor(private http: HttpClient) { }

@@ -1,17 +1,4 @@
-
 <table mat-table [dataSource]="participants" class="mat-elevation-z8">
-
-  <!-- ID -->
-  <!-- <ng-container matColumnDef="id">
-    <th mat-header-cell *matHeaderCellDef> ID </th>
-    <td mat-cell *matCellDef="let p"> {{ p.id }} </td>
-  </ng-container> -->
-
-  <!-- Proyecto -->
-  <!-- <ng-container matColumnDef="project">
-    <th mat-header-cell *matHeaderCellDef> Proyecto </th>
-    <td mat-cell *matCellDef="let p"> {{ p.project }} </td>
-  </ng-container> -->
 
   <!-- RolParticipante -->
   <ng-container matColumnDef="rolParticipant">
@@ -45,12 +32,12 @@
 
   <!-- Código Programa -->
   <ng-container matColumnDef="supportedProgramCode">
-    <th mat-header-cell *matHeaderCellDef> Código Programa </th>
+    <th mat-header-cell *matHeaderCellDef> Programa académico apoyado </th>
     <td mat-cell *matCellDef="let p"> {{ p.supportedProgramCode }} </td>
   </ng-container>
 
   <!-- % Académico -->
-<!--   <ng-container matColumnDef="academicProgPercentage">
+<!-- <ng-container matColumnDef="academicProgPercentage">
     <th mat-header-cell *matHeaderCellDef> % Académico </th>
     <td mat-cell *matCellDef="let p"> {{ p.academicProgPercentage }}% </td>
   </ng-container> -->

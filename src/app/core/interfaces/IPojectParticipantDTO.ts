@@ -12,4 +12,5 @@ export interface IProjectParticipantDTO{
     academicProgPercentage: DoubleRange;
     projectParticipantRole: number;
     nameRol: string;
+    nameGroup: string;
 }
