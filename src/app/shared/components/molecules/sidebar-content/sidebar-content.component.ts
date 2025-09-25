@@ -110,6 +110,7 @@ export class SidebarContentComponent implements OnInit {
     this.filterService.consultarProyectos(filtros).subscribe({
       next: (data) => {
         console.log('Proyectos consultados:', data);
+         this.projectDataService.setProjects(data);
 /*         this.dataSource.data = data;
         this.totalRegistros = data.length;
         this.loadingService.hide();

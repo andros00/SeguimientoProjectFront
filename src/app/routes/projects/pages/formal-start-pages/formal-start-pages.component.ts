@@ -33,8 +33,8 @@ export class FormalStartPagesComponent {
 
   private setProject(project: IProject) {
     this.project = project;
-    this.projectStatus = project.status || '';
-    this.projectShortName = project.shortName || '';
-    this.projectCode = project.code || '';
+    this.projectStatus = project.estado || '';
+    this.projectShortName = project.nombreCorto || '';
+    this.projectCode = project.codigo || '';
   }
 }

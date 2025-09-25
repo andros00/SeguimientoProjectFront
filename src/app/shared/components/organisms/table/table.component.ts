@@ -60,7 +60,7 @@ export class TableComponent implements AfterViewInit {
   navegateToFormalStart(project: IProject) {
     this.projectSelectionService.selectProject(project);
     localStorage.setItem('selectedProject', JSON.stringify(project));
-    this.router.navigate([this.FORMAT_START_URL, project.code]);
+    this.router.navigate([this.FORMAT_START_URL, project.codigo]);
   }
 
   checkVoicemail() {
