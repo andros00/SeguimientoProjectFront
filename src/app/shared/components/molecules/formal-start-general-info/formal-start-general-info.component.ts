@@ -11,7 +11,7 @@ import { IProjectIFormalDTO } from 'src/app/core/interfaces/IProjectIFormalDTO';
 export class FormalStartGeneralInfoComponent {
   form!: FormGroup;
 
-  iProject?: IProjectIFormalDTO;
+private  iProject?: IProjectIFormalDTO;
 
   constructor(
     private projectIformalService: ProjectIformalService,

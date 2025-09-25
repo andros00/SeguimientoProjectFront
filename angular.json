@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/siiu-seguimproyectos-front",
+            "outputPath": "dist/siiu-seguimproyectos-front/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -99,6 +99,61 @@
             ],
             "scripts": []
           }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/siiu-seguimproyectos-front/server",
+            "main": "server.ts",
+            "tsConfig": "tsconfig.server.json",
+            "inlineStyleLanguage": "scss"
+          },
+          "configurations": {
+            "production": {
+              "outputHashing": "media"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "sourceMap": true,
+              "extractLicenses": false,
+              "vendorChunk": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve-ssr": {
+          "builder": "@angular-devkit/build-angular:ssr-dev-server",
+          "configurations": {
+            "development": {
+              "browserTarget": "siiu-seguimproyectos-front:build:development",
+              "serverTarget": "siiu-seguimproyectos-front:server:development"
+            },
+            "production": {
+              "browserTarget": "siiu-seguimproyectos-front:build:production",
+              "serverTarget": "siiu-seguimproyectos-front:server:production"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "prerender": {
+          "builder": "@angular-devkit/build-angular:prerender",
+          "options": {
+            "routes": [
+              "/"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "siiu-seguimproyectos-front:build:production",
+              "serverTarget": "siiu-seguimproyectos-front:server:production"
+            },
+            "development": {
+              "browserTarget": "siiu-seguimproyectos-front:build:development",
+              "serverTarget": "siiu-seguimproyectos-front:server:development"
+            }
+          },
+          "defaultConfiguration": "production"
         }
       }
     }
