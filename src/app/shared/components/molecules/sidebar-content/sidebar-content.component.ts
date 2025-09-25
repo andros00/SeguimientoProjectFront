@@ -8,6 +8,7 @@ import { StatusByUserService } from 'src/app/shared/services/project/status/stat
 import { AnnouncementService } from 'src/app/shared/services/announcement/announcement/announcement.service';
 import { FilterService } from 'src/app/shared/services/project/filter/filter.service';
 import { ProjectDataService } from 'src/app/shared/services/project/project-data/project-data.service';
+import { IProject } from 'src/app/core/interfaces/IProject';
 
 @Component({
   selector: 'app-sidebar-content',
@@ -37,13 +38,14 @@ export class SidebarContentComponent implements OnInit {
 
   private initializeForm(): void {
     this.form = this.fb.group({
-      projectCode: [''],
-      administrativeCenter: [null, Validators.required],
-      status: [''],
-      announcement: [''],
-      selectionProcess: [''],
-      projectType: [''],
-    });
+      codigo: [''],
+      centroGestion: [null, Validators.required],
+      estado: [''],
+      convocatoria: [''],
+      procesoSeleccion: [''],
+      tipoProyecto: [''],
+
+   });
   }
 
   private loadOptions(): void {
@@ -97,4 +99,27 @@ export class SidebarContentComponent implements OnInit {
   onClearFilters(): void {
     this.form.reset();
   }
+
+  consultar(): void {
+
+/*   if (this.formBusqueda.valid) {
+ */
+    const filtros: IProject = this.form.value;
+    //this.loadingService.show();
+
+    this.filterService.consultarProyectos(filtros).subscribe({
+      next: (data) => {
+        console.log('Proyectos consultados:', data);
+/*         this.dataSource.data = data;
+        this.totalRegistros = data.length;
+        this.loadingService.hide();
+ */      },
+      error: (err) => {
+        console.error('Error al consultar proyectos:', err);
+        //this.loadingService.hide();
+      },
+    });
+/*   }
+ */  }
+
 }
