@@ -16,7 +16,18 @@ export class FilterService {
 
   constructor(private http: HttpClient) { }
 
-  filter(
+  consultarProyectos(proyecto: IProject): Observable<IProject[]> {
+  return this.http
+    .post<GenericResponse<IProject[]>>(`${this.url}/consultar`, proyecto)
+    .pipe(
+      map((res) => {
+        console.log('****Respuesta backend:', res);
+        return res.data || [];
+      })
+    );
+}
+
+/*   filter(
     skip: number = 0,
     limit: number = 25,
     administrativeCenterId: number,
@@ -37,12 +48,6 @@ export class FilterService {
     if (processSelectionId != null) params = params.set('selectionProcess', processSelectionId);
     if (projectTypeId != null) params = params.set('projectTypeId', projectTypeId);
     return this.http.get(this.url, { params });
-  }
-
-  consultarProyectos(proyecto: IProject): Observable<IProject[]> {
-    return this.http
-      .post<GenericResponse<IProject[]>>(`${this.url}/consultar`, proyecto)
-      .pipe(map((res) => res.data || []));
-  }
+  } */
 
 }

@@ -39,7 +39,7 @@ export class SidebarContentComponent implements OnInit {
   private initializeForm(): void {
     this.form = this.fb.group({
       codigo: [''],
-      centroGestion: [null, Validators.required],
+      idCentroGestion: [null, Validators.required],
       estado: [''],
       convocatoria: [''],
       procesoSeleccion: [''],
@@ -74,7 +74,7 @@ export class SidebarContentComponent implements OnInit {
     );
   }
 
-  onSubmit(): void {
+/*   onSubmit(): void {
     const formValues = this.form.value;
 
     this.filterService.filter(
@@ -95,7 +95,7 @@ export class SidebarContentComponent implements OnInit {
       }
     );
   }
-
+ */
   onClearFilters(): void {
     this.form.reset();
   }

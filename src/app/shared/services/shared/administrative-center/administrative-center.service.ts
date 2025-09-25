@@ -7,7 +7,7 @@ import { IAdministrativeCenterDTO } from 'src/app/core/interfaces/IAdministrativ
 
 /**
  * Service class for managing operations related to administrative centers.
- * 
+ *
  * This service provides methods to interact with the backend for fetching
  * and managing administrative center data. It is available application-wide due to
  * its root-level provider configuration.
@@ -17,11 +17,12 @@ import { IAdministrativeCenterDTO } from 'src/app/core/interfaces/IAdministrativ
 })
 export class AdministrativeCenterService {
 
-  private readonly url = `${environment.route}/${ENDPOINTS.V1.SHARED_URL.ADMINISTRATIVE_CENTER_LIST}`;
+  //private readonly url = `${environment.route}/${ENDPOINTS.V1.SHARED_URL.ADMINISTRATIVE_CENTER_LIST}`;
+  private readonly url = 'http://localhost:8081/siiu-seguimproyectos-back/compartido/centros-administrativos';
 
   /**
    * Constructor to inject the HttpClient dependency for making HTTP requests.
-   * 
+   *
    * @param http - An Angular service to handle HTTP communications.
    */
   constructor(private http: HttpClient) { }

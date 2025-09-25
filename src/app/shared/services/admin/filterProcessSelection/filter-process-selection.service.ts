@@ -10,7 +10,8 @@ import { environment } from 'src/environments/environment';
 })
 export class FilterProcessSelectionService {
 
-  private readonly url = `${environment.route}/${ENDPOINTS.V1.ADMIN_URL.FILTER_PROCESS_SELECTION_LIST}`;
+  //private readonly url = `${environment.route}/${ENDPOINTS.V1.ADMIN_URL.FILTER_PROCESS_SELECTION_LIST}`;
+  private readonly url = 'http://localhost:8081/siiu-seguimproyectos-back/compartido/filtro-proceso-seleccion';
 
   constructor(private http: HttpClient) { }
 

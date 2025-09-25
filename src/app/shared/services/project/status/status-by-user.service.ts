@@ -9,7 +9,8 @@ import { environment } from 'src/environments/environment';
 })
 export class StatusByUserService {
 
-  private readonly url = `${environment.route}/${ENDPOINTS.V1.PROJECT_URL.STATUS_BY_USER_LIST}`;
+  //private readonly url = `${environment.route}/${ENDPOINTS.V1.PROJECT_URL.STATUS_BY_USER_LIST}`;
+  private readonly url = 'http://localhost:8081/siiu-seguimproyectos-back/proyectos';
 
   constructor(private http: HttpClient) { }
 

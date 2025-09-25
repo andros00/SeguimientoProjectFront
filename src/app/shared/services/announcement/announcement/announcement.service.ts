@@ -10,7 +10,8 @@ import { environment } from 'src/environments/environment';
 })
 export class AnnouncementService {
 
-  private readonly url = `${environment.route}/${ENDPOINTS.V1.ANNOUNCEMENT_URL.ANNOUNCEMENT_LIST}`;
+  //private readonly url = `${environment.route}/${ENDPOINTS.V1.ANNOUNCEMENT_URL.ANNOUNCEMENT_LIST}`;
+  private readonly url = 'http://localhost:8081/siiu-seguimproyectos-back/convocatoria/lista-convocatorias';
 
   constructor(private http: HttpClient) { }
 
