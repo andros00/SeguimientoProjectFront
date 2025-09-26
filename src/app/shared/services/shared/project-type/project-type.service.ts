@@ -18,7 +18,7 @@ import { IProjectTypeDTO } from 'src/app/core/interfaces/IProjectTypeDTO';
 export class ProjectTypeService {
 
   //private readonly url = `${environment.route}/${ENDPOINTS.V1.SHARED_URL.PROJECT_TYPES_LIST}`;
-  private readonly url = 'http://localhost:8081/siiu-seguimproyectos-back/proyectos';
+  private readonly url = 'http://localhost:8081/siiu-seguimproyectos-back/compartido/tipos-proyecto';
 
   /**
    * Constructor to inject the HttpClient dependency for performing HTTP requests.

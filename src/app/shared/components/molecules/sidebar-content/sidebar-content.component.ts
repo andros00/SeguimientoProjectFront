@@ -54,7 +54,7 @@ export class SidebarContentComponent implements OnInit {
       administrativeCenter: this.fetchOptions(this.administrativeCenterSvc.getAll(0, 200), 'id', 'shortName'),
       announcement: this.fetchOptions(this.announcementSvc.getAll(0, 200), 'id', 'name'),
       selectionProcess: this.fetchOptions(this.filterProcessSelectionSvc.getAll(0, 200), 'id', 'name'),
-      statusByUser: this.fetchOptions(this.statusByUserSvc.getAllByUser(0, 10), null, null, true),
+      statusByUser: this.fetchOptions(this.statusByUserSvc.getAllByUser(0, 10), 'id', 'shortName'),
     };
   }
 

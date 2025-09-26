@@ -27,27 +27,5 @@ export class FilterService {
     );
 }
 
-/*   filter(
-    skip: number = 0,
-    limit: number = 25,
-    administrativeCenterId: number,
-    projectCode?: string,
-    status?: string,
-    announcementId?: number,
-    processSelectionId?: number,
-    projectTypeId?: number
-  ): Observable<any> {
-    let params = new HttpParams()
-      .set('skip', skip.toString())
-      .set('limit', limit.toString())
-      .set('administrativeCenterId', administrativeCenterId);
-
-    if (projectCode) params = params.set('projectCode', projectCode.toString());
-    if (status != null) params = params.set('status', status);
-    if (announcementId != null) params = params.set('announcementId', announcementId);
-    if (processSelectionId != null) params = params.set('selectionProcess', processSelectionId);
-    if (projectTypeId != null) params = params.set('projectTypeId', projectTypeId);
-    return this.http.get(this.url, { params });
-  } */
 
 }
